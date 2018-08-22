@@ -353,6 +353,15 @@ binding.lib.UiDialogs.openFile = function(parent) {
 	}
 };
 
+binding.lib.UiDialogs.openFolder = function(parent) {
+	const v = binding.lib.UiDialogs.openFolderInternal(parent);
+	if (v) {
+		return v;
+	} else {
+		return null;
+	}
+};
+
 binding.lib.UiDialogs.saveFile = function(parent) {
 	const v = binding.lib.UiDialogs.saveFileInternal(parent);
 	if (v) {

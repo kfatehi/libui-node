@@ -174,6 +174,17 @@ struct UiDialogs {
 		}
 	}
 
+	static std::string openFolderInternal(UiWindow *parent) {
+		char *char_ptr = uiOpenFolder(parent->getHandle());
+		if (char_ptr == NULL) {
+			return std::string("");
+		} else {
+			std::string s(char_ptr);
+			uiFreeText(char_ptr);
+			return s;
+		}
+	}
+
 	static std::string saveFileInternal(UiWindow *parent) {
 		char *char_ptr = uiSaveFile(parent->getHandle());
 		if (char_ptr == NULL) {
@@ -198,6 +209,7 @@ struct UiDialogs {
 
 NBIND_CLASS(UiDialogs) {
 	method(openFileInternal);
+	method(openFolderInternal);
 	method(saveFileInternal);
 	method(msgBox);
 	method(msgBoxError);
